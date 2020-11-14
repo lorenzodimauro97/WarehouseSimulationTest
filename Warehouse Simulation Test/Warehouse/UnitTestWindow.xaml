@@ -37,8 +37,9 @@
         </ScrollViewer>
         <Button x:Name="TestSpaceButton" Content="Test" HorizontalAlignment="Left" Margin="200,297,0,0"
                 VerticalAlignment="Top" RenderTransformOrigin="0.099,0.273" Height="13" Click="TestSpaceButton_Click" />
-        <Button x:Name="WarehouseResetButton" Width="30" Height="30" Margin="180,131,180,413"
-                AutomationProperties.HelpText="Repopulates the warehouse with fresh data" Click="WarehouseReset">
+        <Button x:Name="WarehouseResetButton" Width="30" Height="30" Margin="0,135,0,0"
+                AutomationProperties.HelpText="Repopulates the warehouse with fresh data" Click="WarehouseReset"
+                HorizontalAlignment="Center" VerticalAlignment="Top">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

@@ -74,11 +74,14 @@
             <Grid x:Name="LinearGrid">
                 <Label Content="Linear Warehouse" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"
                        FontSize="36" />
-                <DataGrid x:Name="LinearDataGrid" Margin="0,63,0,0" ItemsSource="{Binding}"
+                <DataGrid x:Name="LinearDataGrid" Margin="0,63,0,44" ItemsSource="{Binding}"
                           IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True" />
             </Grid>
-            <Button x:Name="TestButton" Content="Test" HorizontalAlignment="Right" Margin="0,0,20,20"
-                    VerticalAlignment="Bottom" Click="OpenTestWindow" />
+            <Button x:Name="TestButton" Content="Test" HorizontalAlignment="Right" Margin="0,0,10,10"
+                    VerticalAlignment="Bottom" Click="OpenTestWindow" Width="62" />
+            <Button x:Name="CustomWarehouseButton" Content="Custom Warehouse" HorizontalAlignment="Center"
+                    Margin="0,0,0,10"
+                    VerticalAlignment="Bottom" Click="OpenCustomWarehouseWindow" />
 
         </Grid>
 

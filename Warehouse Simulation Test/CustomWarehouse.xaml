@@ -1,0 +1,35 @@
+﻿<mah:MetroWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    x:Class="Warehouse_Simulation_Test.CustomWarehouse"
+    mc:Ignorable="d"
+    Title="Custom Warehouse" Height="195" Width="450" ResizeMode="NoResize">
+    <Grid>
+        <Label
+            Content="Accepts only 1-sized items, divided by separator ;&#xD;&#xA;T = Presence of item&#xD;&#xA;F = Lack thereof"
+            HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="59" Width="430" />
+        <TextBox Grid.Column="0" x:Name="WarehouseTextBox" HorizontalAlignment="Center" Margin="0,74,0,0"
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="430" Height="26"
+                 mah:TextBoxHelper.Watermark="Example: F;F;F;T;T;F;F;F;F;T;F;F"
+                 mah:TextBoxHelper.WatermarkTrimming="None" />
+        <Button Grid.Column="0" x:Name="WarehouseResetButton" Width="40" Height="40" Margin="0,0,0,10"
+                AutomationProperties.HelpText="Repopulates the warehouse with custom data" VerticalAlignment="Bottom"
+                HorizontalAlignment="Center" Click="WarehouseResetButton_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="Check"
+                                                    Margin="0,0,0,0"
+                                                    Width="Auto"
+                                                    Height="Auto"
+                                                    VerticalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+    </Grid>
+</mah:MetroWindow>

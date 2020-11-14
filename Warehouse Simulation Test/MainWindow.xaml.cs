@@ -59,5 +59,12 @@ namespace Warehouse_Simulation_Test
 
             window.Show();
         }
+
+        private void OpenCustomWarehouseWindow(object sender, RoutedEventArgs e)
+        {
+            var window = new CustomWarehouse(this);
+
+            window.Show();
+        }
     }
 }

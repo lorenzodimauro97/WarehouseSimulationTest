@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Windows;
+using Warehouse_Simulation_Test.Custom;
 
 namespace Warehouse_Simulation_Test.Warehouse
 {
@@ -86,37 +86,14 @@ namespace Warehouse_Simulation_Test.Warehouse
             {
                 if (random.Next(0, 10) > 1)
                 {
-                    warehouse.AddItemToList(i, new Item("Empty", 0));
+                    warehouse.AddItemToList(i, new Item(string.Empty, 0));
                     continue;
                 }
 
-                warehouse.AddItemToList(i, new Item(RandomString(10), 1));
+                warehouse.AddItemToList(i, new Item(AdditionalMethods.RandomString(10), 1));
             }
 
             return warehouse;
-        }
-
-        public static string RandomString(int size, bool lowerCase = false)
-        {
-            var builder = new StringBuilder(size);
-            var random = new Random();
-
-            // Unicode/ASCII Letters are divided into two blocks
-            // (Letters 65–90 / 97–122):
-            // The first group containing the uppercase letters and
-            // the second group containing the lowercase.  
-
-            // char is a single Unicode character  
-            var offset = lowerCase ? 'a' : 'A';
-            const int lettersOffset = 26; // A...Z or a..z: length=26  
-
-            for (var i = 0; i < size; i++)
-            {
-                var @char = (char) random.Next(offset, offset + lettersOffset);
-                builder.Append(@char);
-            }
-
-            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
         }
     }
 }

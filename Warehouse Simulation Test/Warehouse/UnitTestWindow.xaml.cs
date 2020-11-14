@@ -7,12 +7,13 @@ namespace Warehouse_Simulation_Test.Warehouse
     {
         private readonly MainWindow _mainWindow;
 
-        private bool _selectedWarehouse = true;
+        private bool _selectedWarehouse;
 
         public UnitTestWindow(MainWindow main)
         {
             InitializeComponent();
             _mainWindow = main;
+            _selectedWarehouse = _mainWindow.LinearGrid.IsVisible;
         }
 
         private void SelectionButton_OnClick(object sender, RoutedEventArgs e)
