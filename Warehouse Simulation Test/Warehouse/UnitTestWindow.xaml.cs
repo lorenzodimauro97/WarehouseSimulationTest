@@ -1,48 +1,44 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using MahApps.Metro.Controls;
 
 namespace Warehouse_Simulation_Test.Warehouse
 {
-    /// <summary>
-    ///     Logica di interazione per UnitTestWindow.xaml
-    /// </summary>
-    public partial class UnitTestWindow : MetroWindow
+    public partial class UnitTestWindow
     {
-        private readonly MainWindow mainWindow;
+        private readonly MainWindow _mainWindow;
 
-        private bool selectedWarehouse = true;
+        private bool _selectedWarehouse = true;
 
         public UnitTestWindow(MainWindow main)
         {
             InitializeComponent();
-            mainWindow = main;
+            _mainWindow = main;
         }
 
         private void SelectionButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var Button = sender as Button;
+            var button = sender as Button;
 
-            selectedWarehouse = Button.Name == "LinearButton";
+            _selectedWarehouse = button?.Name == "LinearButton";
         }
 
         private void WarehouseReset(object sender, RoutedEventArgs e)
         {
-            if (selectedWarehouse)
+            if (_selectedWarehouse)
             {
-                mainWindow.linearWarehouse = Warehouse.RandomPopulateWarehouse(int.Parse(WarehouseSize.Text), false);
-                mainWindow.LinearDataGrid.ItemsSource = mainWindow.linearWarehouse.WarehouseSlots;
+                _mainWindow.LinearWarehouse = Warehouse.RandomPopulateWarehouse(int.Parse(WarehouseSize.Text), false);
+                _mainWindow.LinearDataGrid.ItemsSource = _mainWindow.LinearWarehouse.WarehouseSlots;
             }
             else
             {
-                mainWindow.rotatingWarehouse = Warehouse.RandomPopulateWarehouse(int.Parse(WarehouseSize.Text), true);
-                mainWindow.RotatingDataGrid.ItemsSource = mainWindow.rotatingWarehouse.WarehouseSlots;
+                _mainWindow.RotatingWarehouse = Warehouse.RandomPopulateWarehouse(int.Parse(WarehouseSize.Text), true);
+                _mainWindow.RotatingDataGrid.ItemsSource = _mainWindow.RotatingWarehouse.WarehouseSlots;
             }
         }
 
         private void TestSpaceButton_Click(object sender, RoutedEventArgs e)
         {
-            var warehouse = selectedWarehouse ? mainWindow.linearWarehouse : mainWindow.rotatingWarehouse;
+            var warehouse = _selectedWarehouse ? _mainWindow.LinearWarehouse : _mainWindow.RotatingWarehouse;
 
             var minimumSize = int.Parse(MinSize.Text);
             var maxSize = int.Parse(MaxSize.Text);

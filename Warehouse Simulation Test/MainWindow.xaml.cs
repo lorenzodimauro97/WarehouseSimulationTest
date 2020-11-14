@@ -7,19 +7,19 @@ namespace Warehouse_Simulation_Test
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow
     {
-        public Warehouse.Warehouse linearWarehouse;
-        public Warehouse.Warehouse rotatingWarehouse;
+        public Warehouse.Warehouse LinearWarehouse;
+        public Warehouse.Warehouse RotatingWarehouse;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            linearWarehouse = Warehouse.Warehouse.RandomPopulateWarehouse(12, false);
-            rotatingWarehouse = Warehouse.Warehouse.RandomPopulateWarehouse(12, true);
+            LinearWarehouse = Warehouse.Warehouse.RandomPopulateWarehouse(12, false);
+            RotatingWarehouse = Warehouse.Warehouse.RandomPopulateWarehouse(12, true);
 
-            var places = new[] {false, false, false, true, true, false, false, false, false, true, false, false};
+            //var places = new[] {false, false, false, true, true, false, false, false, false, true, false, false};
 
             /* MessageBox.Show(Warehouse.FindFreePlace(places, false, 6).ToString());
              MessageBox.Show(Warehouse.FindFreePlace(places, false, 4).ToString());
@@ -31,7 +31,7 @@ namespace Warehouse_Simulation_Test
         {
             var selectedItem = args.InvokedItem as HamburgerMenuItem;
 
-            switch (selectedItem.Label)
+            switch (selectedItem?.Label)
             {
                 case "Linear":
                     LinearGrid.Visibility = Visibility.Visible;
@@ -49,8 +49,8 @@ namespace Warehouse_Simulation_Test
 
         private void DataGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            LinearDataGrid.ItemsSource = linearWarehouse.WarehouseSlots;
-            RotatingDataGrid.ItemsSource = rotatingWarehouse.WarehouseSlots;
+            LinearDataGrid.ItemsSource = LinearWarehouse.WarehouseSlots;
+            RotatingDataGrid.ItemsSource = RotatingWarehouse.WarehouseSlots;
         }
 
         private void OpenTestWindow(object sender, RoutedEventArgs e)
