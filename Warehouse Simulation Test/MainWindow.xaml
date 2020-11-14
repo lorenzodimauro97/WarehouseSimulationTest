@@ -1,12 +1,81 @@
-﻿<Window x:Class="Warehouse_Simulation_Test.MainWindow"
+﻿<controls:MetroWindow x:Class="Warehouse_Simulation_Test.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warehouse_Simulation_Test"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        xmlns:converters="clr-namespace:MahApps.Metro.IconPacks.Converter;assembly=MahApps.Metro.IconPacks.Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Loaded="DataGrid_Loaded"
+        Title="Warehouse Simulation" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Media/icon.ico" ShowIconOnTitleBar="True">
 
-    </Grid>
-</Window>
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type controls:HamburgerMenuIconItem}">
+                <DockPanel Height="48" LastChildFill="True">
+                    <Grid x:Name="IconPart"
+              Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:HamburgerMenu}}, Path=CompactPaneLength}"
+              DockPanel.Dock="Left">
+                        <Image Margin="12"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Source="{Binding Icon}" />
+                    </Grid>
+                    <TextBlock x:Name="TextPart"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Text="{Binding Label}" />
+                </DockPanel>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:HamburgerMenu}}, Path=PanePlacement}" Value="Right">
+                        <Setter TargetName="IconPart" Property="DockPanel.Dock" Value="Right" />
+                        <Setter TargetName="TextPart" Property="Margin" Value="8 0 0 0" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
+
+    <controls:HamburgerMenu x:Name="HamburgerMenuControl"
+                          DisplayMode="CompactOverlay"
+                          HamburgerWidth="48"
+                          ItemInvoked="SelectWarehouseType"
+                          ItemTemplate="{StaticResource HamburgerMenuItem}">
+
+        <controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <DataTemplate>
+                <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Foreground="White"
+                   Text="Warehouse Types" />
+            </DataTemplate>
+        </controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
+
+        <!--  Items  -->
+        <controls:HamburgerMenu.ItemsSource>
+            <controls:HamburgerMenuItemCollection>
+                <controls:HamburgerMenuIconItem Icon="/Media/Linear.ico"  Label="Linear"/>
+                <controls:HamburgerMenuIconItem Icon="/Media/Rotating.ico" Label="Rotating" />
+            </controls:HamburgerMenuItemCollection>
+        </controls:HamburgerMenu.ItemsSource>
+        <Grid x:Name="Grid">
+            <Grid x:Name="RotatingGrid" Visibility="Hidden">
+                <Label Content="Rotating Warehouse" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="36"/>
+                <DataGrid x:Name="RotatingDataGrid" Margin="0,63,0,0" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True"/>
+
+            </Grid>
+            <Grid x:Name="LinearGrid">
+                <Label Content="Linear Warehouse" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="36"/>
+                <DataGrid x:Name="LinearDataGrid" Margin="0,63,0,0" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="True"/>
+            </Grid>
+            <Button x:Name="TestButton" Content="Test" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Click="OpenTestWindow"/>
+
+        </Grid>
+
+    </controls:HamburgerMenu>
+</controls:MetroWindow>

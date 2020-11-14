@@ -5,7 +5,29 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Warehouse_Simulation_Test</RootNamespace>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Media\icon.ico</ApplicationIcon>
+    <StartupObject>Warehouse_Simulation_Test.App</StartupObject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icon.ico" />
+    <None Remove="Media\Linear.ico" />
+    <None Remove="Media\Rotating.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.3.4" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Media\icon.ico" />
+    <Resource Include="Media\Linear.ico" />
+    <Resource Include="Media\Rotating.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Test\" />
+  </ItemGroup>
 
 </Project>
