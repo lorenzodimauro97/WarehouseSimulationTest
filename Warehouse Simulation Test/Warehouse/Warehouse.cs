@@ -6,8 +6,8 @@ namespace Warehouse_Simulation_Test.Warehouse
 {
     public class Warehouse
     {
-        public Item[] WarehouseSlots;
         public bool IsRotary;
+        public Item[] WarehouseSlots;
 
         public Warehouse(int size, bool isRotary)
         {
@@ -16,9 +16,10 @@ namespace Warehouse_Simulation_Test.Warehouse
                 MessageBox.Show("Warehouse size is 0! This is not allowed! Please assign the correct warehouse size!");
                 Application.Current.Shutdown();
             }
+
             WarehouseSlots = new Item[size];
 
-            this.IsRotary = isRotary;
+            IsRotary = isRotary;
         }
 
         public void AddItemToList(int position, Item item)
@@ -31,10 +32,9 @@ namespace Warehouse_Simulation_Test.Warehouse
 
             if (item.Size.Equals(0)) WarehouseSlots[position] = item;
 
-            else for (var i = 0; i < item.Size; i++, position++)
-                {
+            else
+                for (var i = 0; i < item.Size; i++, position++)
                     WarehouseSlots[position] = item;
-                }
         }
 
         public int FindFreePlace(Item item)
@@ -45,15 +45,14 @@ namespace Warehouse_Simulation_Test.Warehouse
             var index = 0;
 
             for (var i = 0; i <= iterationsCount; i++)
-            {
                 foreach (var items in WarehouseSlots)
                 {
-                    if (count == item.Size) return (index - item.Size) + 1;
+                    if (count == item.Size) return index - item.Size + 1;
                     if (items.Size.Equals(0) || items.Name == "Empty") count++;
                     else count = 0;
                     index++;
                 }
-            }
+
             return -1;
         }
 
@@ -66,15 +65,14 @@ namespace Warehouse_Simulation_Test.Warehouse
             var index = 0;
 
             for (var i = 0; i <= iterationsCount; i++)
-            {
                 foreach (var item in places)
                 {
                     if (!item) count++;
                     else count = 0;
-                    if (count == neededPlaces) return (index - neededPlaces + 1);
+                    if (count == neededPlaces) return index - neededPlaces + 1;
                     index++;
                 }
-            }
+
             return -1;
         }
 
@@ -114,7 +112,7 @@ namespace Warehouse_Simulation_Test.Warehouse
 
             for (var i = 0; i < size; i++)
             {
-                var @char = (char)random.Next(offset, offset + lettersOffset);
+                var @char = (char) random.Next(offset, offset + lettersOffset);
                 builder.Append(@char);
             }
 

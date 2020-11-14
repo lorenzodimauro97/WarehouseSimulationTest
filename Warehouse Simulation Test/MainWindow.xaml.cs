@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using MahApps.Metro.Controls;
 using Warehouse_Simulation_Test.Warehouse;
 

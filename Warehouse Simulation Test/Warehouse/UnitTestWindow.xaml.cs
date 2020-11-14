@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 
 namespace Warehouse_Simulation_Test.Warehouse
 {
     /// <summary>
-    /// Logica di interazione per UnitTestWindow.xaml
+    ///     Logica di interazione per UnitTestWindow.xaml
     /// </summary>
     public partial class UnitTestWindow : MetroWindow
     {
@@ -64,7 +53,8 @@ namespace Warehouse_Simulation_Test.Warehouse
             {
                 var sizeTestResult = warehouse.FindFreePlace(new Item("", i));
 
-                if (sizeTestResult.Equals(-1)) ResultsBox.Text += $"Item of size {i} is too big for current warehouse!\n";
+                if (sizeTestResult.Equals(-1))
+                    ResultsBox.Text += $"Item of size {i} is too big for current warehouse!\n";
                 else ResultsBox.Text += $"Item of size {i} can be placed at position {sizeTestResult}!\n";
             }
         }
