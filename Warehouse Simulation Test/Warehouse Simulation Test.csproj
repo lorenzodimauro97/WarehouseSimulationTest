@@ -7,6 +7,15 @@
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>Media\icon.ico</ApplicationIcon>
 		<StartupObject>Warehouse_Simulation_Test.App</StartupObject>
+		<Authors>Lorenzo Di Mauro</Authors>
+		<Company>Lorenzo Di Mauro Productions</Company>
+		<Copyright>Lorenzo Di Mauro Productions</Copyright>
+		<RepositoryUrl>https://github.com/scippo97/WarehouseSimulationTest</RepositoryUrl>
+		<RepositoryType>GitHub</RepositoryType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <WarningLevel>5</WarningLevel>
 	</PropertyGroup>
 
 	<ItemGroup>

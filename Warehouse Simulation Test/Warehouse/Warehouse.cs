@@ -48,7 +48,7 @@ namespace Warehouse_Simulation_Test.Warehouse
                 foreach (var items in WarehouseSlots)
                 {
                     if (count == item.Size) return index - item.Size + 1;
-                    if (items.Size.Equals(0) || items.Name == "Empty") count++;
+                    if (items.Size.Equals(0) || items.Name == string.Empty) count++;
                     else count = 0;
                     index++;
                 }
